@@ -19,15 +19,16 @@ NumPy
 HTML, CSS, JavaScript(basic frontend)
 
 
-Project Structure
+Project Structure :
+
 face_attendance/
-app.py                  # Main Flask application
-face_trainer.yml        # Trained LBPH face recognition model
-labels.npy              # Label mappings (ID to Name)
-requirements.txt        # Python dependencies
-Procfile                # Deployment startup command
-templates/
-    index.html          # Frontend web interface
+    app.py                  # Main Flask application
+    face_trainer.yml        # Trained LBPH face recognition model
+    labels.npy              # Label mappings (ID to Name)
+    requirements.txt        # Python dependencies
+    Procfile                # Deployment startup command
+    templates/
+        index.html          # Frontend web interface
 
 
 How to Run
