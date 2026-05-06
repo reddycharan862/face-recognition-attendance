@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Attendance</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+        video {
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Face Recognition Attendance</h2>
+
+<video id="video" width="400" autoplay></video>
+<br>
+<button onclick="capture()">Capture</button>
+
+<p id="result"></p>
+
+<canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
+
+<script>
+const video = document.getElementById('video');
+const result = document.getElementById('result');
+
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(stream => {
+    video.srcObject = stream;
+});
+
+function capture() {
+    result.innerText = "Processing...";
+
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, 400, 300);
+
+    const image = canvas.toDataURL("image/jpeg");
+
+    fetch('/upload', {
+        method: 'POST',
+        body: JSON.stringify({ image: image }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(data => {
+        result.innerText = data.message;
+    });
+}
+</script>
+
+</body>
+</html>
