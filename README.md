@@ -32,7 +32,7 @@ templates/
 
 How to Run
 
-Clone the repository => git clone https://github.com/YOUR_USERNAME/face_attendance.git
+Clone the repository => git clone https://github.com/reddycharan862/face_attendance.git
 cd face attendance
 
 Install required packages => pip install -r requirements.txt
