@@ -37,6 +37,8 @@ cd face attendance
 
 Install required packages => pip install -r requirements.txt
 
+important : firstly upload 3+ images of yours in data sets manually then run the (python train.py) code to train the model with your face
+
 Run the application => python app.py
 
 Open your browser and go to => http://127.0.0.1:5000
